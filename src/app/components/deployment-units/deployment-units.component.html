@@ -1,0 +1,16 @@
+<h3 class="header">Deplyment Units</h3>
+<button class="create-button" routerLink='create' >New Deployment Unit</button>
+<table>
+        <thead>
+            <tr>
+               <th *ngFor="let coloumn of deployUnitColumns">{{coloumn}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let dUnit of deploymentUnits; let i = index ">
+                <td >{{dUnit.Id}}</td>
+                <td >{{dUnit.Name}}</td>
+                <td >{{dUnit.Country}}</td>                
+            </tr>
+        </tbody>
+</table>

@@ -1,0 +1,26 @@
+<h3 class="header">Products</h3>
+<button class="create-button" routerLink='create' >New Product</button>
+<table>
+    <thead>
+        <tr>
+           <th *ngFor="let coloumn of productColumns">{{coloumn}}</th>
+           <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of products; let i = index ">
+            <td >{{product.Id}}</td>
+            <td >{{product.Name}}</td>
+            <td >{{product.Description}}</td>
+            <td>
+                <div class="edit-action pull-left">&#9998;</div>
+                <div class="dropdown-menu pull-left">
+                    <div class="actionMenu" (clickOutside)="closeActionMenu()" (click)="toggleActionMenu(product)"></div>
+                    <div *ngIf="actionMenus?.length && isActionMenuOpend && activeProduct.Id==product.Id" class="dropdown-menu-content">
+                        <a href="#" routerLink='{{menu.routeTo}}' *ngFor="let menu of actionMenus">{{menu.text}}</a>                      
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>

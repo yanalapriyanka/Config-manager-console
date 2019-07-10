@@ -1,0 +1,16 @@
+<h3 class="header">Settings</h3>
+<button class="create-button" routerLink='create' >New Setting</button>
+<table>
+        <thead>
+            <tr>
+                <th *ngFor="let coloumn of settingColumns">{{coloumn}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let setting of settings; let i = index ">
+                <td >{{setting.Id}}</td>
+                <td >{{setting.Name}}</td>
+                <td >{{setting.Country}}</td>                
+            </tr>
+        </tbody>
+    </table>

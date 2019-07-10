@@ -1,0 +1,16 @@
+<h3 class="header">Environments</h3>
+<button class="create-button" routerLink='create' >New Environment</button>
+<table>
+    <thead>
+        <tr>
+            <th *ngFor="let coloumn of envColumns">{{coloumn}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let env of environments; let i = index ">
+            <td >{{env.Id}}</td>
+            <td >{{env.Name}}</td>
+            <td >{{env.Country}}</td>                
+        </tr>
+    </tbody>
+</table>
