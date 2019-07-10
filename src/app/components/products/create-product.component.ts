@@ -16,11 +16,11 @@ export class CreateProductComponent implements OnInit {
   }
   errorList : string[];
   product : Product = new Product();
-  isEditProduct: boolean =false;
+  isEdit: boolean =false;
   ngOnInit() {
     let routeParamId=this.route.snapshot.params.id;
     if(routeParamId){
-      this.isEditProduct=true;
+      this.isEdit=true;
       let id= Number(routeParamId);
       this.productService.fetchProductById(id).subscribe(res=>{
         if(res && res.Success){
@@ -35,7 +35,7 @@ export class CreateProductComponent implements OnInit {
   //TODO: update any to Product
   onClickSubmit(product: Product): void {
     console.log(product);
-    if(this.isEditProduct){
+    if(this.isEdit){
       this.productService.updateProduct(product).subscribe(res=>{
         if(res && res.Success){
           console.log(res.Message);

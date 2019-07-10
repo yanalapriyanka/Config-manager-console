@@ -1,4 +1,4 @@
-<h3 class="header">{{isEditProduct ? 'Update' : 'Create'}} Product</h3>
+<h3 class="header">{{isEdit ? 'Update' : 'Create'}} Product</h3>
 <span *ngFor="let error of errorList;">
     <p>{{error}}</p>
 </span>
@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="row">
-            <input type="submit" value="{{isEditProduct ? 'Update' : 'Save'}}">
+            <input type="submit" value="{{isEdit ? 'Update' : 'Save'}}">
         </div>
     </form>
 </div>
