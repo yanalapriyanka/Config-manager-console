@@ -13,7 +13,7 @@
             <td >{{product.Name}}</td>
             <td >{{product.Description}}</td>
             <td>
-                <div class="edit-action pull-left">&#9998;</div>
+                <div class="edit-action pull-left" routerLink= "edit/{{product.Id}}">&#9998;</div>
                 <div class="dropdown-menu pull-left">
                     <div class="actionMenu" (clickOutside)="closeActionMenu()" (click)="toggleActionMenu(product)"></div>
                     <div *ngIf="actionMenus?.length && isActionMenuOpend && activeProduct.Id==product.Id" class="dropdown-menu-content">

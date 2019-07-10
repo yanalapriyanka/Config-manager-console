@@ -1,12 +1,15 @@
-<h3 class="header">Create Product</h3>
-<div class="container">
-    <form #product="ngForm" (ngSubmit)="onClickSubmit(product.value)" >
+<h3 class="header">{{isEditProduct ? 'Update' : 'Create'}} Product</h3>
+<span *ngFor="let error of errorList;">
+    <p>{{error}}</p>
+</span>
+<div class="container"> 
+    <form (ngSubmit)="onClickSubmit(product)" >
         <div class="row">
             <div class="col-25">
                 <label for="fname">Name</label>
             </div>
             <div class="col-75">
-                <input type="text" id="fname" name="Name" placeholder="Name.." ngModel>
+                <input type="text" id="fname" name="product.Name" placeholder="Name.." [(ngModel)]="product.Name">
             </div>
         </div>
         <div class="row">
@@ -14,11 +17,11 @@
                 <label for="lname">Description</label>
             </div>
             <div class="col-75">
-                <input type="text" id="lname" name="Description" placeholder="Description" ngModel>
+                <input type="text" id="lname" name="product.Description" placeholder="Description" [(ngModel)]="product.Description">
             </div>
         </div>
         <div class="row">
-            <input type="submit" value="Save">
+            <input type="submit" value="{{isEditProduct ? 'Update' : 'Save'}}">
         </div>
     </form>
 </div>

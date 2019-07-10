@@ -14,7 +14,7 @@ export class ProductsComponent implements OnInit {
   }
   isActionMenuOpend: boolean;
   actionMenus = [];
-  activeProduct = 0;
+  activeProduct = -1;
   productColumns: any = ['Id', 'Name', 'Country'];
   products: Product[];
   errorList: string[];
@@ -25,7 +25,6 @@ export class ProductsComponent implements OnInit {
   }
   toggleActionMenu(product: any): void {
     this.activeProduct = product;
-    console.log(product);
     this.isActionMenuOpend = !this.isActionMenuOpend;
   }
   closeActionMenu(): void {
