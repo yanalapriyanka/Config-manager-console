@@ -8,9 +8,10 @@
         </thead>
         <tbody>
             <tr *ngFor="let dUnit of deploymentUnits; let i = index ">
-                <td >{{dUnit.Id}}</td>
                 <td >{{dUnit.Name}}</td>
-                <td >{{dUnit.Country}}</td>                
+                <td >{{dUnit.Description}}</td>   
+                <td>{{dUnit.ProductName}}</td>
+                <td>{{dUnit.ProtocolName}}</td>                  
             </tr>
         </tbody>
 </table>

@@ -11,8 +11,8 @@ import { Product } from 'src/app/models/product.model';
   styles: []
 })
 export class DeploymentUnitsComponent implements OnInit {
-  deployUnitColumns: any = ['Id', 'Name', 'Country'];
-  deploymentUnit: DeploymentUnit[];
+  deployUnitColumns: any = ['Name', 'Description', 'Product' ,'Protocol'];
+  deploymentUnits: DeploymentUnit[];
   errorList: string[]; 
   activeProduct : Product = new Product;
   constructor(public productService: ProductService, private deployementunitService: DeploymentunitService) { }
@@ -22,8 +22,8 @@ export class DeploymentUnitsComponent implements OnInit {
     this.deployementunitService.fetchDeploymentUnitByProducId(this.activeProduct.Id).subscribe(res=>{
         console.log(res);
         if(res && res.Success){
-          this.deploymentUnit = res.Data;
-          console.log(this.deploymentUnit);
+          this.deploymentUnits = res.Data;
+          console.log(this.deploymentUnits);
         } else {
           this.errorList = res.ErrorDetails;
         }      
