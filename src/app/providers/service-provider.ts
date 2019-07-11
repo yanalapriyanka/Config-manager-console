@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient ,HttpHeaders} from '@angular/common/http';
-import { Observable, from } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { CustomHeader } from '../models/custom-http-header.model';
 import {ConfigConstants} from '../common/app-config-constants';
+import { Utility } from '../common/utility';
 
 @Injectable()
 export class ServiceProvider {
-    constructor(public http:HttpClient){
+    constructor(public http:HttpClient, public utility:Utility){
 
     }
     baseApi='v1';

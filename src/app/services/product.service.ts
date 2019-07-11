@@ -1,18 +1,26 @@
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/internal/operators/map';
-import { Observable, from } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { ProductsListResponse } from '../models/products-list-response.model';
 import { ServiceProvider } from '../providers/service-provider';
 import { Constants } from '../common/app-constants';
 import { ApiResponse } from '../models/api-response.model';
-import {Product} from '../models/product.model';
+import { Product } from '../models/product.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService extends  ServiceProvider {
 
+  activeProduct: Product = new Product; 
+
+  setActiveProduct(product : Product){
+    this.activeProduct = product;
+  }
+  getActiveProduct() : Product{
+    return this.activeProduct;
+  }
   /**
    * fetches the products list
    */
@@ -23,7 +31,8 @@ export class ProductService extends  ServiceProvider {
    * fetches the product by id
    */
   fetchProductById(id):Observable<ProductsListResponse>{
-    return this.get(Constants.ApiCalls.getProduct+"/"+id).pipe(map(output=>this.mapProductDetails(output)));
+    let url = this.utility.formatString(Constants.ApiCalls.getProduct, [id]);
+    return this.get(url).pipe(map(output=>this.mapProductDetails(output)));
   }
   /**
    * Create product
@@ -36,7 +45,8 @@ export class ProductService extends  ServiceProvider {
    * Update product
    */
   updateProduct(productModel:Product):Observable<ApiResponse>{
-    return this.put(Constants.ApiCalls.createProduct +"/"+productModel.Id, productModel).pipe(map(output=>this.mapCreateProduct(output)));
+    let url = this.utility.formatString(Constants.ApiCalls.updateProduct, [productModel.Id]);
+    return this.put(url, productModel).pipe(map(output=>this.mapCreateProduct(output)));
   }
 
   private mapProductDetails(response: any): ProductsListResponse {

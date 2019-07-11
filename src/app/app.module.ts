@@ -14,6 +14,8 @@ import { CreateEnvironmentComponent } from './components/environments/create-env
 import { SettingsComponent } from './components/settings/settings.component';
 import { CreateSettingComponent } from './components/settings/create-setting.component';
 import { ProductService } from './services/product.service';
+import {Utility} from './common/utility';
+
 
 
 @NgModule({
@@ -35,6 +37,7 @@ import { ProductService } from './services/product.service';
     HttpClientModule
   ],
   providers: [
+    Utility,
     ProductService
   ],
   bootstrap: [AppComponent]

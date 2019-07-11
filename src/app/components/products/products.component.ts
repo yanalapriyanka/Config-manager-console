@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ProductService} from 'src/app/Services/product.service';
-import { ProductsListResponse } from 'src/app/Models/products-list-response.model';
-import { Product } from 'src/app/Models/product.model';
+import {ProductService} from 'src/app/services/product.service';
+import { Product } from 'src/app/models/product.model';
 
 @Component({
   selector: 'app-products',
@@ -14,7 +13,7 @@ export class ProductsComponent implements OnInit {
   }
   isActionMenuOpend: boolean;
   actionMenus = [];
-  activeProduct = -1;
+  activeProduct : Product = new Product;
   productColumns: any = ['Id', 'Name', 'Country'];
   products: Product[];
   errorList: string[];
@@ -25,7 +24,7 @@ export class ProductsComponent implements OnInit {
   }
   toggleActionMenu(product: any): void {
     this.activeProduct = product;
-    this.isActionMenuOpend = !this.isActionMenuOpend;
+    this.isActionMenuOpend = !this.isActionMenuOpend;    
   }
   closeActionMenu(): void {
     this.isActionMenuOpend = false;
@@ -48,7 +47,9 @@ export class ProductsComponent implements OnInit {
       routeTo: '/settings'
     });
   }
-  
+  setActiveProduct(product : Product):void{
+    this.productService.setActiveProduct(product);   
+  }
   getAllProducts():void{
     this.productService.fetchAllProducts().subscribe(res => {
       console.log(res);
