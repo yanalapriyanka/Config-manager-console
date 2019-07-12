@@ -11,7 +11,7 @@ import { Product } from 'src/app/models/product.model';
   styles: []
 })
 export class DeploymentUnitsComponent implements OnInit {
-  deployUnitColumns: any = ['Name', 'Description', 'Product' ,'Protocol'];
+  deployUnitColumns: any = ['Name', 'Description','Product' ,'Protocol'];
   deploymentUnits: DeploymentUnit[];
   errorList: string[]; 
   activeProduct : Product = new Product;
@@ -19,7 +19,11 @@ export class DeploymentUnitsComponent implements OnInit {
 
   ngOnInit() {
     this.activeProduct = this.productService.getActiveProduct();
-    this.deployementunitService.fetchDeploymentUnitByProducId(this.activeProduct.Id).subscribe(res=>{
+    if(Object.keys(this.activeProduct).length === 0){
+      this.productService.navigateToProducts();
+    }
+    else{
+      this.deployementunitService.fetchDeploymentUnitByProducId(this.activeProduct.Id).subscribe(res=>{
         console.log(res);
         if(res && res.Success){
           this.deploymentUnits = res.Data;
@@ -27,7 +31,8 @@ export class DeploymentUnitsComponent implements OnInit {
         } else {
           this.errorList = res.ErrorDetails;
         }      
-    });
+      });      
+    }
   }
 
 }

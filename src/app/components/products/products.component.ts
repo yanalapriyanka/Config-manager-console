@@ -55,6 +55,7 @@ export class ProductsComponent implements OnInit {
       console.log(res);
       if(res && res.Success){
         this.products = res.Data;
+        this.productService.setProducts(res.Data);
       } else {
         this.errorList = res.ErrorDetails;
       }      

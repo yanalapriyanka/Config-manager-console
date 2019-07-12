@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient ,HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 import { CustomHeader } from '../models/custom-http-header.model';
 import {ConfigConstants} from '../common/app-config-constants';
@@ -8,7 +9,7 @@ import { Utility } from '../common/utility';
 
 @Injectable()
 export class ServiceProvider {
-    constructor(public http:HttpClient, public utility:Utility){
+    constructor(public router: Router, public http:HttpClient, public utility:Utility){
 
     }
     baseApi='v1';

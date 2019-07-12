@@ -14,12 +14,20 @@ import { Product } from '../models/product.model';
 export class ProductService extends  ServiceProvider {
 
   activeProduct: Product = new Product; 
+  products: Product[];
 
   setActiveProduct(product : Product){
     this.activeProduct = product;
   }
   getActiveProduct() : Product{
     return this.activeProduct;
+  }
+
+  setProducts(productsList : Product[]){
+    this.products = productsList;
+  }
+  getProducts(): Product[]{
+    return this.products;
   }
   /**
    * fetches the products list
@@ -49,6 +57,10 @@ export class ProductService extends  ServiceProvider {
     return this.put(url, productModel).pipe(map(output=>this.mapCreateProduct(output)));
   }
 
+  navigateToProducts(){
+    this.router.navigate(['/products']);
+  }
+  
   private mapProductDetails(response: any): ProductsListResponse {
 
     var result: ProductsListResponse;

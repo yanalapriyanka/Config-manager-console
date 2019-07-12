@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import{ProductService} from 'src/app/services/product.service';
+import{ ProductService } from 'src/app/services/product.service';
 import {Product } from 'src/app/models/product.model';
 
 @Component({
@@ -11,14 +11,13 @@ import {Product } from 'src/app/models/product.model';
 })
 export class CreateProductComponent implements OnInit {
 
-  constructor(private productService:ProductService,private route: ActivatedRoute){
-
+  constructor(private route: ActivatedRoute, private productService:ProductService){
   }
   errorList : string[];
   product : Product = new Product();
-  isEdit: boolean =false;
+  isEdit: boolean =false;  
   ngOnInit() {
-    let routeParamId=this.route.snapshot.params.id;
+    let routeParamId=this.route.snapshot.paramMap.get('id');
     if(routeParamId){
       this.isEdit=true;
       let id= Number(routeParamId);
@@ -29,8 +28,7 @@ export class CreateProductComponent implements OnInit {
           this.errorList=res.ErrorDetails;
         }
       });
-    }
-    
+    }   
   }
   //TODO: update any to Product
   onClickSubmit(product: Product): void {
@@ -51,7 +49,6 @@ export class CreateProductComponent implements OnInit {
           this.errorList=res.ErrorDetails;
         }
       });
-    }
-    
+    }    
   }
 }

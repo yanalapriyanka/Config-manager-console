@@ -4,7 +4,7 @@ export class DeploymentUnit {
     Description : string;
     ProductId: number;
     ProductName: string;
-    ProtocalId: number;
-    ProtocalName: string;
-    DeployemnetUnitTypeId: number
+    ProtocolId: number;
+    ProtocolName: string;
+    DeploymentUnitTypeId: number
 }
