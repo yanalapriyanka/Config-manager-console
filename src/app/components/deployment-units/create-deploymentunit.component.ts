@@ -17,8 +17,8 @@ export class CreateDeploymentunitComponent implements OnInit {
     this.formBuilder.group({
       protocols: ['']
     });
-    this.protocols = this.getProtocols();
-    this.DeploymentunitTypes = this.getDeploymentunitTypes();
+    this.protocols = this.deploymentunitService.getProtocols();
+    this.DeploymentunitTypes = this.deploymentunitService.getDeploymentunitTypes();
    }
 
   deploymentUnit : any =  new Object();
@@ -72,18 +72,5 @@ export class CreateDeploymentunitComponent implements OnInit {
     dUnit.DeploymentUnitTypeId = obj.DeploymentUnitType ? obj.DeploymentUnitType.Id : -1;
 
     return dUnit;
-  }
-  private getProtocols() {
-    return [
-      {ProtocolId :1 , ProtocolName: 'HTTP'},
-      {ProtocolId :2 , ProtocolName: 'HTTPS'},
-      {ProtocolId :3 , ProtocolName: 'TCP'}
-    ];
-  }
-  private getDeploymentunitTypes(){
-    return[
-      { Id: 1, Name: 'Custom' },
-      { Id: 2, Name: 'Third Party' }
-    ]
-  }
+  } 
 }

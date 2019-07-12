@@ -15,16 +15,43 @@ import { ApiResponse } from '../models/api-response.model';
 export class DeploymentunitService extends ServiceProvider {
   
   /**
+   * Type of Protocols
+   */
+  getProtocols() {
+    return [
+      {ProtocolId :1 , ProtocolName: 'HTTP'},
+      {ProtocolId :2 , ProtocolName: 'HTTPS'},
+      {ProtocolId :3 , ProtocolName: 'TCP'}
+    ];
+  }
+  /**
+   * Type of Deployment Units
+   */
+  getDeploymentunitTypes(){
+    return[
+      { Id: 1, Name: 'Custom' },
+      { Id: 2, Name: 'Third Party' }
+    ]
+  }
+  /**
    * fetches the product by id
    */
   fetchDeploymentUnitByProducId(id):Observable<DeploymentUnitResponse>{
     let url = this.utility.formatString(Constants.ApiCalls.getDeploymentUnitByProductId, [id]);
     return this.get(url).pipe(map(output=>this.mapDeploymentUnitDetails(output)));
   }
+  /**
+   * Create DeploymentUnit
+   * @param DeploymentUnit
+   */
   createDeploymentUnit(deploymentUnitModel:DeploymentUnit):Observable<ApiResponse>{
     let url = this.utility.formatString(Constants.ApiCalls.createDeploymentUnit, [deploymentUnitModel.ProductId]);
     return this.post(url,deploymentUnitModel).pipe(map(output=>this.mapDeploymentUnit(output)));
   }
+  /**
+   * Update DeploymentUnit
+   * @param DeploymentUnit
+   */
   updateDeploymentUnit(deploymentUnitModel:DeploymentUnit):Observable<ApiResponse>{
     let url = this.utility.formatString(Constants.ApiCalls.updateDeploymentUnit, [deploymentUnitModel.ProductId,deploymentUnitModel.Id]);
     return this.post(url ,deploymentUnitModel).pipe(map(output=>this.mapDeploymentUnit(output)));

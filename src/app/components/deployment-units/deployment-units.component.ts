@@ -11,19 +11,21 @@ import { Product } from 'src/app/models/product.model';
   styles: []
 })
 export class DeploymentUnitsComponent implements OnInit {
-  deployUnitColumns: any = ['Name', 'Description','Product' ,'Protocol'];
+  deployUnitColumns: any = ['Name', 'Description','DeploymentUnit Type', 'Product' ,'Protocol'];
   deploymentUnits: DeploymentUnit[];
   errorList: string[]; 
   activeProduct : Product = new Product;
-  constructor(public productService: ProductService, private deployementunitService: DeploymentunitService) { }
+  DeploymentunitTypes: any = [];
+  constructor(public productService: ProductService, private deploymentunitService: DeploymentunitService) { }
 
   ngOnInit() {
     this.activeProduct = this.productService.getActiveProduct();
+    this.DeploymentunitTypes = this.deploymentunitService.getDeploymentunitTypes(); //TODO: bind name of dataunittype
     if(Object.keys(this.activeProduct).length === 0){
       this.productService.navigateToProducts();
     }
     else{
-      this.deployementunitService.fetchDeploymentUnitByProducId(this.activeProduct.Id).subscribe(res=>{
+      this.deploymentunitService.fetchDeploymentUnitByProducId(this.activeProduct.Id).subscribe(res=>{
         console.log(res);
         if(res && res.Success){
           this.deploymentUnits = res.Data;
@@ -33,6 +35,5 @@ export class DeploymentUnitsComponent implements OnInit {
         }      
       });      
     }
-  }
-
+  }  
 }
