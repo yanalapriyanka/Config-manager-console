@@ -37,6 +37,10 @@ const routes: Routes = [
       {
         path: 'create',
         component: CreateDeploymentunitComponent
+      },
+      {
+        path: 'edit/:id',
+        component: CreateDeploymentunitComponent
       }
     ]
   },

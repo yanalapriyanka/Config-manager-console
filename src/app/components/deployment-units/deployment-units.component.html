@@ -4,15 +4,19 @@
         <thead>
             <tr>
                <th *ngFor="let coloumn of deployUnitColumns">{{coloumn}}</th>
+               <th></th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let dUnit of deploymentUnits; let i = index ">
                 <td>{{dUnit.Name}}</td>
                 <td>{{dUnit.Description}}</td>   
-                <td>{{dUnit.DeploymentUnitTypeId}}</td>
+                <td>{{DUTypes[dUnit.DeploymentUnitTypeId]}}</td>
                 <td>{{dUnit.ProductName}}</td>
-                <td>{{dUnit.ProtocolName}}</td>                  
+                <td>{{dUnit.ProtocolName}}</td>    
+                <td>
+                    <div class="edit-action pull-left" routerLink= "edit/{{dUnit.Id}}">&#9998;</div>
+                </td>           
             </tr>
         </tbody>
 </table>

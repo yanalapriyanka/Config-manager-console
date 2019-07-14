@@ -5,7 +5,7 @@ import { map } from 'rxjs/internal/operators/map';
 import { DeploymentUnitResponse } from '../models/deploymentunit.response.model';
 import { DeploymentUnit } from '../models/deploymentunit.model';
 import { ServiceProvider } from '../providers/service-provider';
-import { Constants } from '../common/app-constants';
+import { Constants, ProtocolTypes , DUTypes} from '../common/app-constants';
 import { ApiResponse } from '../models/api-response.model';
 
 
@@ -19,9 +19,9 @@ export class DeploymentunitService extends ServiceProvider {
    */
   getProtocols() {
     return [
-      {ProtocolId :1 , ProtocolName: 'HTTP'},
-      {ProtocolId :2 , ProtocolName: 'HTTPS'},
-      {ProtocolId :3 , ProtocolName: 'TCP'}
+      {ProtocolId :1 , ProtocolName: ProtocolTypes[1]},
+      {ProtocolId :2 , ProtocolName: ProtocolTypes[2]},
+      {ProtocolId :3 , ProtocolName: ProtocolTypes[3]}
     ];
   }
   /**
@@ -29,15 +29,25 @@ export class DeploymentunitService extends ServiceProvider {
    */
   getDeploymentunitTypes(){
     return[
-      { Id: 1, Name: 'Custom' },
-      { Id: 2, Name: 'Third Party' }
+      { Id: 1, Name: DUTypes[1] },
+      { Id: 2, Name: DUTypes[2] }
     ]
   }
+  /**
+   * Get Deployment unit by product id and deployment id
+   * @param productId 
+   * @param deploymentUnitId 
+   */
+  getDeploymentUnitById(productId,deploymentUnitId):Observable<DeploymentUnitResponse>{
+    let url = this.utility.formatString(Constants.ApiCalls.getDeploymentUnitById, [productId,deploymentUnitId]);
+    return this.get(url).pipe(map(output=>this.mapDeploymentUnitDetails(output)));
+  }
+
   /**
    * fetches the product by id
    */
   fetchDeploymentUnitByProducId(id):Observable<DeploymentUnitResponse>{
-    let url = this.utility.formatString(Constants.ApiCalls.getDeploymentUnitByProductId, [id]);
+    let url = this.utility.formatString(Constants.ApiCalls.getDeploymentUnitsByProductId, [id]);
     return this.get(url).pipe(map(output=>this.mapDeploymentUnitDetails(output)));
   }
   /**
@@ -54,7 +64,7 @@ export class DeploymentunitService extends ServiceProvider {
    */
   updateDeploymentUnit(deploymentUnitModel:DeploymentUnit):Observable<ApiResponse>{
     let url = this.utility.formatString(Constants.ApiCalls.updateDeploymentUnit, [deploymentUnitModel.ProductId,deploymentUnitModel.Id]);
-    return this.post(url ,deploymentUnitModel).pipe(map(output=>this.mapDeploymentUnit(output)));
+    return this.put(url ,deploymentUnitModel).pipe(map(output=>this.mapDeploymentUnit(output)));
   }
   private mapDeploymentUnitDetails(response: any): DeploymentUnitResponse {
     var result: DeploymentUnitResponse;

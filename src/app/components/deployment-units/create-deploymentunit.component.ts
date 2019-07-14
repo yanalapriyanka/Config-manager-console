@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from "@angular/forms";
+import { ActivatedRoute } from '@angular/router';
 
 import { DeploymentUnit } from 'src/app/models/deploymentunit.model';
 import { Product } from 'src/app/models/product.model';
 import { ProductService } from 'src/app/services/product.service';
 import { DeploymentunitService } from 'src/app/services/deploymentunit.service';
+import { ProtocolTypes} from 'src/app/common/app-constants';
 
 @Component({
   selector: 'app-create-deploymentunit',
@@ -13,31 +15,42 @@ import { DeploymentunitService } from 'src/app/services/deploymentunit.service';
 })
 export class CreateDeploymentunitComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder , private productService : ProductService, private deploymentunitService : DeploymentunitService) {
+  constructor(private route: ActivatedRoute , private formBuilder: FormBuilder , private productService : ProductService, private deploymentunitService : DeploymentunitService) {
     this.formBuilder.group({
       protocols: ['']
-    });
-    this.protocols = this.deploymentunitService.getProtocols();
-    this.DeploymentunitTypes = this.deploymentunitService.getDeploymentunitTypes();
+    });    
    }
 
   deploymentUnit : any =  new Object();
   protocols: any = [];
-  DeploymentunitTypes: any = [];
+  deploymentunitTypes: any = [];
   products: Product[];
   activeProduct : Product = new Product;
   isEdit: boolean =false;
   errorList: string[];
-  ngOnInit() {    
+  selectedProtocol: number= 1;
+  selectedDUType: number= 1;
+  ngOnInit() {   
+    this.protocols = this.deploymentunitService.getProtocols();
+    this.deploymentunitTypes = this.deploymentunitService.getDeploymentunitTypes();
     this.activeProduct = this.productService.getActiveProduct();
     if(Object.keys(this.activeProduct).length === 0){
       this.productService.navigateToProducts();
-    }
-    else{
-       /* Intialize default values */
-       this.deploymentUnit.Protocal = null;
-       this.deploymentUnit.DeploymentUnitType = null;
-       this.products = this.productService.getProducts(); //TODO: not in use
+    } else{      
+      let routeParamId=this.route.snapshot.paramMap.get('id');
+      if(routeParamId){
+        this.isEdit=true;
+        let id= Number(routeParamId);
+        this.deploymentunitService.getDeploymentUnitById(this.activeProduct.Id, id).subscribe(res=>{
+          if(res && res.Success){
+            this.deploymentUnit = res.Data[0];
+            this.selectedProtocol = this.deploymentUnit.ProtocolId;
+            this.selectedDUType = this.deploymentUnit.DeploymentUnitTypeId;
+          }else{
+            this.errorList=res.ErrorDetails;
+          }
+        });
+      }
     }
   }
   onClickSubmit(deploymentUnit: any): void {
@@ -63,13 +76,14 @@ export class CreateDeploymentunitComponent implements OnInit {
   }  
   private createRequest(obj: any): DeploymentUnit{
     let dUnit= new DeploymentUnit();
+    dUnit.Id = obj.Id;
     dUnit.Name = obj.Name;
     dUnit.Description = obj.Description;
     dUnit.ProductId = this.activeProduct.Id;
     dUnit.ProductName = this.activeProduct.Name;
-    dUnit.ProtocolId = obj.Protocal ? obj.Protocal.ProtocolId : -1;
-    dUnit.ProtocolName = obj.Protocal ? obj.Protocal.ProtocolName : '';
-    dUnit.DeploymentUnitTypeId = obj.DeploymentUnitType ? obj.DeploymentUnitType.Id : -1;
+    dUnit.ProtocolId = this.selectedProtocol;
+    dUnit.ProtocolName = ProtocolTypes[this.selectedProtocol];
+    dUnit.DeploymentUnitTypeId = this.selectedDUType;
 
     return dUnit;
   } 

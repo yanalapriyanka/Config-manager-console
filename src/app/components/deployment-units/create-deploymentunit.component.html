@@ -17,30 +17,16 @@
                 <label for="lname">Description</label>
             </div>
             <div class="col-75">
-                <input type="text" id="lname" name="deploymentUnit.Description" placeholder="County" [(ngModel)]="deploymentUnit.Description">
+                <input type="text" id="lname" name="deploymentUnit.Description" placeholder="Description" [(ngModel)]="deploymentUnit.Description">
             </div>
         </div>
-        <!-- <div class="row">
-            <div class="col-25">
-                <label for="lname">Product</label>
-            </div>
-            <div class="col-75">
-                <select name="product" [(ngModel)]="deploymentUnit.ProductId">
-                    <option [ngValue]="-1" disabled>Select product</option>
-                    <option *ngFor="let product of products" [ngValue]="product">
-                        {{ product.Name }}
-                    </option>
-                </select>
-            </div>
-        </div> -->
         <div class="row">
             <div class="col-25">
                 <label for="lname">Protocol</label>
             </div>
             <div class="col-75">
-                <select name="protocol" [(ngModel)]="deploymentUnit.Protocal">
-                    <option [ngValue]="null" disabled>Select protocol</option>
-                    <option *ngFor="let protocol of protocols" [ngValue]="protocol">
+                <select name="protocol" [(ngModel)]="selectedProtocol">
+                    <option *ngFor="let protocol of protocols" [ngValue]="protocol.ProtocolId">
                         {{ protocol.ProtocolName }}
                     </option>
                 </select>
@@ -48,12 +34,11 @@
         </div>
         <div class="row">
                 <div class="col-25">
-                    <label for="lname">DeploymentUnit Type</label>
+                    <label for="lname">DeploymentUnit Type {{selectedDUType}}</label>
                 </div>
                 <div class="col-75">
-                    <select name="deploymentunitType" [(ngModel)]="deploymentUnit.DeploymentUnitType">
-                        <option [ngValue]="null" disabled>Select DeploymentUnit Type</option>
-                        <option *ngFor="let type of DeploymentunitTypes" [ngValue]="type">
+                    <select name="deploymentunitType" [(ngModel)]="selectedDUType">
+                        <option *ngFor="let type of deploymentunitTypes" [ngValue]="type.Id">
                             {{ type.Name }}
                         </option>
                     </select>

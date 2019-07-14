@@ -4,6 +4,7 @@ import {ProductService} from 'src/app/services/product.service';
 import {DeploymentunitService} from 'src/app/services/deploymentunit.service';
 import {DeploymentUnit} from 'src/app/models/deploymentunit.model';
 import { Product } from 'src/app/models/product.model';
+import { DUTypes} from 'src/app/common/app-constants';
 
 @Component({
   selector: 'app-deployment-units',
@@ -16,6 +17,7 @@ export class DeploymentUnitsComponent implements OnInit {
   errorList: string[]; 
   activeProduct : Product = new Product;
   DeploymentunitTypes: any = [];
+  DUTypes = DUTypes;
   constructor(public productService: ProductService, private deploymentunitService: DeploymentunitService) { }
 
   ngOnInit() {
@@ -28,7 +30,7 @@ export class DeploymentUnitsComponent implements OnInit {
       this.deploymentunitService.fetchDeploymentUnitByProducId(this.activeProduct.Id).subscribe(res=>{
         console.log(res);
         if(res && res.Success){
-          this.deploymentUnits = res.Data;
+          this.deploymentUnits = res.Data;          
           console.log(this.deploymentUnits);
         } else {
           this.errorList = res.ErrorDetails;

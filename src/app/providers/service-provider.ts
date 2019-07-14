@@ -44,7 +44,7 @@ export class ServiceProvider {
      * @param body 
      */
     public post(url: string, body?: any, httpHeader?: CustomHeader[]): Observable<object> {
-        return this.http.post(this.getBaseUrl() + 'v1/' + url, body, { headers: this.getRequestHeaders(httpHeader) });
+        return this.http.post(this.getBaseUrl() + this.baseApi + url, body, { headers: this.getRequestHeaders(httpHeader) });
     }
 
     /**
@@ -53,14 +53,14 @@ export class ServiceProvider {
   * @param body 
   */
     public postFormData(url: string, body?: any, httpHeader?: CustomHeader[]): Observable<object> {
-        return this.http.post(this.getBaseUrl() + 'v1/' + url, body, { headers: this.getRequestHeaders(httpHeader,true) });
+        return this.http.post(this.getBaseUrl() + this.baseApi + url, body, { headers: this.getRequestHeaders(httpHeader,true) });
     }
     /**
      * customer get implementation
      * @param url 
      */
     public get(url: string, httpHeader?: CustomHeader[]): Observable<object> {
-        return this.http.get(this.getBaseUrl() + 'v1/' + url, { headers: this.getRequestHeaders(httpHeader) })
+        return this.http.get(this.getBaseUrl() + this.baseApi + url, { headers: this.getRequestHeaders(httpHeader) })
     }
     /**
      * customer put implementation
@@ -68,7 +68,7 @@ export class ServiceProvider {
      * @param body 
      */
     public put(url: string, body?: any, httpHeader?: CustomHeader[]): Observable<object> {
-        return this.http.put(this.getBaseUrl() + 'v1/' + url, body, { headers: this.getRequestHeaders(httpHeader) });
+        return this.http.put(this.getBaseUrl() + this.baseApi + url, body, { headers: this.getRequestHeaders(httpHeader) });
     }
     /**
      * custom delete Impletataion
@@ -76,7 +76,7 @@ export class ServiceProvider {
      * @param body 
      */
     public delete(url: string, body?: any, httpHeader?: CustomHeader[]): Observable<object> {
-        return this.http.delete(this.getBaseUrl() + 'v1/' + url, { headers: this.getRequestHeaders(httpHeader) });
+        return this.http.delete(this.getBaseUrl() + this.baseApi + url, { headers: this.getRequestHeaders(httpHeader) });
     }
 
 }
