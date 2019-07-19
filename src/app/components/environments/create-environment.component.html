@@ -1,24 +1,27 @@
-<h3 class="header">Create Environment</h3>
+<h3 class="header">{{isEdit ? 'Update' : 'Create'}} Environment</h3>
+<span *ngFor="let error of errorList;">
+    <p>{{error}}</p>
+</span>
 <div class="container">
-    <form #environment="ngForm" (ngSubmit)="onClickSubmit(environment.value)" >
+    <form (ngSubmit)="onClickSubmit(environment)" >
         <div class="row">
             <div class="col-25">
                 <label for="fname">Name</label>
             </div>
             <div class="col-75">
-                <input type="text" id="fname" name="name" placeholder="Name.." ngModel>
+                <input type="text" id="fname" name="name" placeholder="Name.." [(ngModel)]="environment.Name">
             </div>
         </div>
         <div class="row">
             <div class="col-25">
-                <label for="lname">County</label>
+                <label for="lname">Description</label>
             </div>
             <div class="col-75">
-                <input type="text" id="lname" name="county" placeholder="County" ngModel>
+                <input type="text" id="lname" name="county" placeholder="Description" [(ngModel)]="environment.Description">
             </div>
         </div>
         <div class="row">
-            <input type="submit" value="Save">
+            <input type="submit" value="{{isEdit ? 'Update' : 'Save'}}">
         </div>
     </form>
 </div>
