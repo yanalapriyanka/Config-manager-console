@@ -54,6 +54,10 @@ const routes: Routes = [
       {
         path: 'create',
         component: CreateEnvironmentComponent
+      },
+      {
+        path: 'edit/:id',
+        component: CreateEnvironmentComponent
       }
     ]
   },
@@ -66,6 +70,10 @@ const routes: Routes = [
       },
       {
         path: 'create',
+        component: CreateSettingComponent
+      },
+      {
+        path: 'edit/:id',
         component: CreateSettingComponent
       }
     ]

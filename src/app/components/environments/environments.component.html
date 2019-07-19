@@ -4,13 +4,18 @@
     <thead>
         <tr>
             <th *ngFor="let coloumn of envColumns">{{coloumn}}</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let env of environments; let i = index ">
             <td >{{env.Id}}</td>
             <td >{{env.Name}}</td>
-            <td >{{env.Country}}</td>                
+            <td >{{env.Description}}</td>  
+            <td >{{env.ProductName}}</td>        
+            <td>
+                <div class="edit-action pull-left" routerLink= "edit/{{env.Id}}">&#9998;</div>
+            </td>       
         </tr>
     </tbody>
 </table>

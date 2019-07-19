@@ -7,7 +7,11 @@ export const Constants={
         getDeploymentUnitById: "/products/{0}/deploymentunits/{1}",
         getDeploymentUnitsByProductId: "/products/{0}/deploymentunits",
         createDeploymentUnit:"/products/{0}/deploymentunits",
-        updateDeploymentUnit:"/products/{0}/deploymentunits/{1}"
+        updateDeploymentUnit:"/products/{0}/deploymentunits/{1}",
+        getEnvironmentById: "/products/{0}/environments/{1}",
+        getEnvironmentByProductId: "/products/{0}/environments",
+        createEnvironment:"/products/{0}/environments",
+        updateEnvironment:"/products/{0}/environments/{1}"
     }
 }
 export enum ProtocolTypes{
