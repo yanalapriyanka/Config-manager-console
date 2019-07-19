@@ -4,5 +4,5 @@ export class Setting {
     Description : string;
     ProductId: number;
     ProductName: string;
-    SettingTypeId: number;    
+    ConfigurationSettingTypeId: number;    
 }

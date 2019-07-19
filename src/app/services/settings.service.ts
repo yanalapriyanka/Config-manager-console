@@ -5,7 +5,7 @@ import { map } from 'rxjs/internal/operators/map';
 import { SettingResponse } from '../models/setting.response.model';
 import { Setting } from '../models/setting.model';
 import { ServiceProvider } from '../providers/service-provider';
-import { Constants} from '../common/app-constants';
+import { Constants, ConfigSettingTypes} from '../common/app-constants';
 import { ApiResponse } from '../models/api-response.model';
 
 
@@ -14,6 +14,15 @@ import { ApiResponse } from '../models/api-response.model';
 })
 export class SettingService extends ServiceProvider {
    
+  /**
+   * Type of Settings
+   */
+  getSettingTypes() {
+    return [
+      { Id: 1, Name: ConfigSettingTypes[1] },
+      { Id: 2, Name: ConfigSettingTypes[2] }
+    ];
+  }
   /**
    * Get Deployment unit by product id and deployment id
    * @param productId 
