@@ -66,6 +66,9 @@ export class DeploymentunitService extends ServiceProvider {
     let url = this.utility.formatString(Constants.ApiCalls.updateDeploymentUnit, [deploymentUnitModel.ProductId,deploymentUnitModel.Id]);
     return this.put(url ,deploymentUnitModel).pipe(map(output=>this.mapDeploymentUnit(output)));
   }
+  navigateToDeploymentUnits(){
+    this.router.navigate(['/deploymentUnits']);
+  }
   private mapDeploymentUnitDetails(response: any): DeploymentUnitResponse {
     var result: DeploymentUnitResponse;
     try {

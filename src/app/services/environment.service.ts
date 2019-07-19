@@ -47,6 +47,10 @@ export class EnvironmentService extends ServiceProvider {
     let url = this.utility.formatString(Constants.ApiCalls.updateEnvironment, [envModel.ProductId,envModel.Id]);
     return this.put(url ,envModel).pipe(map(output=>this.mapEnvironment(output)));
   }
+  navigateToEnvironments(){
+    this.router.navigate(['/environments']);
+  }
+
   private mapEnvironmentDetails(response: any): EnvironmentResponse {
     var result: EnvironmentResponse;
     try {

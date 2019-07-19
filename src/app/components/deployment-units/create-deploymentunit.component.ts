@@ -59,7 +59,7 @@ export class CreateDeploymentunitComponent implements OnInit {
     if(this.isEdit){
       this.deploymentunitService.updateDeploymentUnit(deploymentUnit).subscribe(res=>{
         if(res && res.Success){
-          console.log(res.Message);
+          this.deploymentunitService.navigateToDeploymentUnits();
         }else{
           this.errorList=res.ErrorDetails;
         }
@@ -67,7 +67,7 @@ export class CreateDeploymentunitComponent implements OnInit {
     } else{
       this.deploymentunitService.createDeploymentUnit(deploymentUnit).subscribe(res=>{
         if(res && res.Success){
-          console.log(res.Message);
+          this.deploymentunitService.navigateToDeploymentUnits();
         }else{
           this.errorList=res.ErrorDetails;
         }

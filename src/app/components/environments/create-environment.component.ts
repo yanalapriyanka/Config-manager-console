@@ -45,7 +45,7 @@ export class CreateEnvironmentComponent implements OnInit {
     if(this.isEdit){
       this.environmentService.updateEnvironment(environment).subscribe(res=>{
         if(res && res.Success){
-          console.log(res.Message);
+          this.environmentService.navigateToEnvironments();
         }else{
           this.errorList=res.ErrorDetails;
         }
@@ -53,7 +53,7 @@ export class CreateEnvironmentComponent implements OnInit {
     } else{
       this.environmentService.createEnvironment(environment).subscribe(res=>{
         if(res && res.Success){
-          console.log(res.Message);
+          this.environmentService.navigateToEnvironments();
         }else{
           this.errorList=res.ErrorDetails;
         }
