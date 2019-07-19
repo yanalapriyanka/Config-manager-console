@@ -4,13 +4,19 @@
         <thead>
             <tr>
                 <th *ngFor="let coloumn of settingColumns">{{coloumn}}</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let setting of settings; let i = index ">
                 <td >{{setting.Id}}</td>
                 <td >{{setting.Name}}</td>
-                <td >{{setting.Country}}</td>                
+                <td >{{setting.Description}}</td> 
+                <td >{{setting.ProductName}}</td>  
+                <td >{{ConfigSettingTypes[setting.ConfigurationSettingTypeId]}}</td>
+                <td>
+                    <div class="edit-action pull-left" routerLink= "edit/{{setting.Id}}">&#9998;</div>
+                </td>                    
             </tr>
         </tbody>
     </table>

@@ -11,7 +11,11 @@ export const Constants={
         getEnvironmentById: "/products/{0}/environments/{1}",
         getEnvironmentByProductId: "/products/{0}/environments",
         createEnvironment:"/products/{0}/environments",
-        updateEnvironment:"/products/{0}/environments/{1}"
+        updateEnvironment:"/products/{0}/environments/{1}",
+        getSettingById: "/products/{0}/settings/{1}",
+        getSettingByProductId: "/products/{0}/settings",
+        createSetting:"/products/{0}/settings",
+        updateSetting:"/products/{0}/settings/{1}"
     }
 }
 export enum ProtocolTypes{
@@ -22,4 +26,8 @@ export enum ProtocolTypes{
 export enum DUTypes{
     "Custom" = 1,
     "Third Party"
+}
+export enum ConfigSettingTypes{
+    "Fixed" = 1,
+    "Dynamic"
 }
