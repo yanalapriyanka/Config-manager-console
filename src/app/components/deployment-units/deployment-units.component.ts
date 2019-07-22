@@ -50,11 +50,14 @@ export class DeploymentUnitsComponent implements OnInit {
     this.isActionMenuOpend = false;
     console.log('closeActionMenu'); // TODO : implement directive
   }
+  setActiveDeployUnit(du : DeploymentUnit):void{
+    this.deploymentunitService.setActiveDeployUnit(du);   
+  }
   actionList(): void {
     this.actionMenus.push({
       id: 1,
       text: 'Settings',
-      routeTo: '/deploymentUnits/settings/'+this.activeDU.Id
+      routeTo: '/deploymentUnits/mapSettings'
     });    
   }
 }

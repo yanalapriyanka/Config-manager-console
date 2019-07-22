@@ -8,6 +8,8 @@ export const Constants={
         getDeploymentUnitsByProductId: "/products/{0}/deploymentunits",
         createDeploymentUnit:"/products/{0}/deploymentunits",
         updateDeploymentUnit:"/products/{0}/deploymentunits/{1}",
+        configureDeployUnitSettings:"/products/{0}/deploymentunits/{1}/configuresettings",
+        getDeployUnitSettings:"/products/{0}/deploymentunits/{1}/settings",
         getEnvironmentById: "/products/{0}/environments/{1}",
         getEnvironmentByProductId: "/products/{0}/environments",
         createEnvironment:"/products/{0}/environments",

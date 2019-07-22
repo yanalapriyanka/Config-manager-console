@@ -44,7 +44,7 @@ const routes: Routes = [
         component: CreateDeploymentunitComponent
       },
       {
-        path: 'settings/:id',
+        path: 'mapSettings',
         component: MapDUSettings
       }
     ]

@@ -19,7 +19,7 @@
                     <div class="dropdown-menu pull-left">
                         <div class="actionMenu" (clickOutside)="closeActionMenu()" (click)="toggleActionMenu(dUnit)"></div>
                         <div *ngIf="actionMenus?.length && isActionMenuOpend && activeDU.Id==dUnit.Id" class="dropdown-menu-content">
-                            <a href="#" routerLink='{{menu.routeTo}}' *ngFor="let menu of actionMenus">{{menu.text}}</a>                      
+                            <a href="#" routerLink='{{menu.routeTo}}' *ngFor="let menu of actionMenus" (click)="setActiveDeployUnit(dUnit)">{{menu.text}}</a>                      
                         </div>
                     </div>
                 </td>           

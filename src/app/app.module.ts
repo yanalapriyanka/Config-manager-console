@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule , FormBuilder} from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -36,7 +37,8 @@ import {Utility} from './common/utility';
     BrowserModule,
     AppRoutingModule,
     FormsModule,    
-    HttpClientModule
+    HttpClientModule,
+    DragDropModule
   ],
   providers: [
     FormBuilder,

@@ -7,13 +7,20 @@ import { DeploymentUnit } from '../models/deploymentunit.model';
 import { ServiceProvider } from '../providers/service-provider';
 import { Constants, ProtocolTypes , DUTypes} from '../common/app-constants';
 import { ApiResponse } from '../models/api-response.model';
-
+import { SettingResponse } from '../models/setting.response.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DeploymentunitService extends ServiceProvider {
   
+  activeDeployUnit: DeploymentUnit = new DeploymentUnit; 
+  setActiveDeployUnit(du : DeploymentUnit){
+    this.activeDeployUnit = du;
+  }
+  getActiveDeployUnit() : DeploymentUnit{
+    return this.activeDeployUnit;
+  }
   /**
    * Type of Protocols
    */
@@ -66,6 +73,26 @@ export class DeploymentunitService extends ServiceProvider {
     let url = this.utility.formatString(Constants.ApiCalls.updateDeploymentUnit, [deploymentUnitModel.ProductId,deploymentUnitModel.Id]);
     return this.put(url ,deploymentUnitModel).pipe(map(output=>this.mapDeploymentUnit(output)));
   }
+  /**
+   * Configure DeployUnit settings
+   * @param productId
+   * @param DUId
+   * @param settingsModel
+   */
+  configureDeployUnitSettings( productId:number, DUId: number , settingsModel: any):Observable<ApiResponse>{
+    let url = this.utility.formatString(Constants.ApiCalls.configureDeployUnitSettings,[productId,DUId]);
+    return this.post(url, settingsModel).pipe(map(output=>this.mapDeploymentUnit(output)));
+  }
+  /**
+   * Get DeployUnit settings
+   * @param productId
+   * @param DUId
+   */
+  getDeployUnitSettings( productId:number, DUId: number):Observable<SettingResponse>{
+    let url = this.utility.formatString(Constants.ApiCalls.getDeployUnitSettings,[productId,DUId]);
+    return this.get(url).pipe(map(output=>this.mapDeployUnitSettings(output)));
+  }
+
   navigateToDeploymentUnits(){
     this.router.navigate(['/deploymentUnits']);
   }
@@ -88,6 +115,19 @@ export class DeploymentunitService extends ServiceProvider {
 
       if (response) {
         result = response as ApiResponse;
+      }
+    }
+    catch (error) {
+      // console.log(error);
+    }
+    return result;
+  }
+  private mapDeployUnitSettings(response:any):SettingResponse{
+    var result: SettingResponse;
+    try {
+
+      if (response) {
+        result = response as SettingResponse;
       }
     }
     catch (error) {

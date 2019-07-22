@@ -124,3 +124,31 @@ input[type=submit]:hover {
 }
 /* Generic Style*/
 
+
+/** Deployment mapping**/
+.map-draggable-container{
+    height: 400px;    
+    div{
+      width: 35%;
+      padding: 10px;
+      background-color: #f1f1f1;
+      height: 300px; 
+      overflow: auto;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+    .map-draggable{      
+      height: 300px;      
+    }
+    .map-droppable{      
+      height: 100px;       
+      margin: 0px 0px 0px auto;
+    }
+    .item{
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+}
+.map-draggable-container .item:hover {background-color: #ddd;}
