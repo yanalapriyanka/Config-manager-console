@@ -18,9 +18,13 @@ export class DeploymentUnitsComponent implements OnInit {
   activeProduct : Product = new Product;
   DeploymentunitTypes: any = [];
   DUTypes = DUTypes;
+  isActionMenuOpend: boolean;
+  activeDU : DeploymentUnit = new DeploymentUnit;
+  actionMenus = [];
   constructor(public productService: ProductService, private deploymentunitService: DeploymentunitService) { }
 
   ngOnInit() {
+    this.actionList();
     this.activeProduct = this.productService.getActiveProduct();
     this.DeploymentunitTypes = this.deploymentunitService.getDeploymentunitTypes(); //TODO: bind name of dataunittype
     if(Object.keys(this.activeProduct).length === 0){
@@ -37,5 +41,20 @@ export class DeploymentUnitsComponent implements OnInit {
         }      
       });      
     }
+  }
+  toggleActionMenu(du: any): void {
+    this.activeDU = du;
+    this.isActionMenuOpend = !this.isActionMenuOpend;    
   }  
+  closeActionMenu(): void {
+    this.isActionMenuOpend = false;
+    console.log('closeActionMenu'); // TODO : implement directive
+  }
+  actionList(): void {
+    this.actionMenus.push({
+      id: 1,
+      text: 'Settings',
+      routeTo: '/deploymentUnits/settings/'+this.activeDU.Id
+    });    
+  }
 }

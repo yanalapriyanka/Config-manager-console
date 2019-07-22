@@ -8,6 +8,7 @@ import { EnvironmentsComponent } from './components/environments/environments.co
 import { CreateEnvironmentComponent } from './components/environments/create-environment.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { CreateSettingComponent } from './components/settings/create-setting.component';
+import { MapDUSettings } from './components/deployment-units/map-du-settings.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
       {
         path: 'edit/:id',
         component: CreateDeploymentunitComponent
+      },
+      {
+        path: 'settings/:id',
+        component: MapDUSettings
       }
     ]
   },
