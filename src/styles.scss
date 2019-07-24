@@ -1,5 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import './styles/variables.scss';
+*{
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
 .header {
     background-color: $header-bg-color;
     padding: 20px 10px;
@@ -100,6 +104,9 @@ input[type=submit]:hover {
   width: 25%;
   margin-top: 6px;
 }
+.mr-20{
+  margin-right: 20px;
+}
 .col-75 {
   float: left;
   width: 75%;
@@ -122,33 +129,135 @@ input[type=submit]:hover {
 .cursor-pointer{
   cursor: pointer;
 }
+.clearfix{
+  clear: both;
+}
 /* Generic Style*/
 
-
-/** Deployment mapping**/
-.map-draggable-container{
-    height: 400px;    
-    div{
-      width: 35%;
-      padding: 10px;
-      background-color: #f1f1f1;
-      height: 300px; 
-      overflow: auto;
-      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-      z-index: 1;
-    }
-    .map-draggable{      
-      height: 300px;      
-    }
-    .map-droppable{      
-      height: 100px;       
-      margin: 0px 0px 0px auto;
-    }
-    .item{
-      color: black;
-      padding: 12px 16px;
-      text-decoration: none;
-      display: block;
-    }
+.map-draggable-container div ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
-.map-draggable-container .item:hover {background-color: #ddd;}
+.map-draggable-container div ul li {
+  margin: 0;
+  line-height: 24px;
+  position: relative;
+  font-size: 13px;
+  white-space: nowrap;
+  border-bottom: 1px solid #e2e3e4;
+  padding: 5px;
+}
+.map-draggable-container{
+  width: 700px;
+  margin: 0 auto;
+}
+
+.map-draggable-container {
+  position: relative;
+  
+  .map-blocks-source{
+    border-radius: 6px;
+    border: 1px solid #e2e3e4;
+    width: 222px !important;
+    float: left !important;
+    overflow-y: auto;
+    height: 300px !important;
+    box-sizing: border-box;
+    ul{
+      li{
+        &:hover{
+          background-color: #ccc;
+          color: #fff;
+        }
+
+        &.active{
+          background-color: #ccc;
+          color: #fff;
+        }
+        span{
+          padding-top: 4px;
+          padding-bottom: 4px;
+        }
+      }
+    }
+  }
+
+  .map-blocks-destination{
+    border-radius: 6px;
+    border: 1px solid #e2e3e4;
+    width: 222px !important;
+    float: right !important;
+    overflow-y: auto;
+    height: 300px !important;
+    box-sizing: border-box;
+    ul{
+      li{
+        &:hover{
+          background-color: #ccc;
+          color: #fff;
+        }
+
+        &.active{
+          background-color: #ccc;
+          color: #fff;
+        }
+        span{
+          padding-top: 4px;
+          padding-bottom: 4px;
+        }
+      }
+    }
+  }
+  .mapping-section{
+    width: 60px;
+    height: 300px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    ul{
+      padding-top: 60px;
+      li{
+        list-style: none;
+        width: 60px;
+        border: 1px solid #ccc;
+        margin-bottom: 20px;
+        text-align: center;
+        vertical-align: middle;
+        cursor: pointer;
+
+        &:hover{
+          background-color: #ccc;
+          color: #fff;
+        }
+
+        &.active{
+          background-color: #ccc;
+          color: #fff;
+        }       
+      }      
+    }
+  }
+}
+.lessThan:after {
+  content: '\003C';        
+}
+.greaterThan:after {
+  content: '\003E';        
+}
+.doubleLessThan:after{
+  content: '\226A';
+}
+.doubleGreaterThan:after{
+  content: '\226B';
+}
+.footer-section{
+  margin: 20px auto 0 auto;
+  width: 700px;
+  border-top: 1px solid #e2e3e4;
+  padding-top: 20px;  
+  .buttons{
+    float: right;
+  }
+}

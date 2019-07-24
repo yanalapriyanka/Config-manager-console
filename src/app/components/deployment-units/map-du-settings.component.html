@@ -1,22 +1,35 @@
-<h3 class="header">Deplyment Units Mapping</h3>
-<span *ngFor="let error of errorList;">
-  <p>{{error}}</p>
-</span>
+<h3 class="header">Deployment Units Mapping</h3>
 <div class="map-draggable-container">
-  <div cdkDropList class="map-draggable pull-left"
-    [cdkDropListConnectedTo] ="mapsettingList">
-    <span cdkDrag *ngFor="let item of configSettings" class="item">
-      {{item.Name}}
-    </span>
+  <div class="map-blocks-source">
+    <ul>
+      <li *ngFor="let source of sourceSettings" 
+      (click)="selectSourceItem(source.Id)" 
+      [ngClass]="selectedSourceItem==source.Id ? 'active' : ''">
+          <span>{{source.Name}}</span>
+      </li>
+    </ul>
   </div>
-  <div cdkDropList class="map-droppable"
-    #mapsettingList="cdkDropList"
-    (cdkDropListDropped)="drop($event)">
-    <span class="item">
-      {{activeDeployUnit.Name}}
-    </span> <span *ngFor="let map of mappedSettings">{{map}}</span>
-  </div>  
+  <div class="mapping-section">
+    <ul>
+      <li *ngFor="let arrow of mappingButtonsTosend; let i = index;" [ngClass]="arrow.enable ? 'active' : '' " class="{{arrow.class}}" (click)="sendData(i)"></li>
+    </ul>
+  </div>
+  <div class="map-blocks-destination">
+    <ul>
+        <li *ngFor="let destination of destinationSettings"
+        (click)="selectDestinationItem(destination.Id)" 
+        [ngClass]="selectedDestinationItem==destination.Id ? 'active' : ''">
+            <span>{{destination.Name}}</span>
+        </li>        
+    </ul>
+  </div>
 </div>
-<div class="">
-  <input type="submit" value="Save" (click)="configureDeployUnitSettings()">
-</div>
+<div class="clearfix"></div>
+<div class="footer-section">
+  <div class="buttons">
+    <input type="submit" value="Save" class="button-default" (click)="saveDeployUnitConfigSettings()">
+  </div>
+  <div class="buttons mr-20">
+      <input type="submit" value="Cancel" class="button-danger" (click)="navigateDeployUnits()">
+    </div>
+  </div>
