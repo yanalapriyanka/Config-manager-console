@@ -57,7 +57,7 @@ export class DeploymentUnitsComponent implements OnInit {
     this.actionMenus.push({
       id: 1,
       text: 'Settings',
-      routeTo: '/deploymentUnits/mapSettings'
+      routeTo: '/deploymentUnits/configSettings'
     });    
   }
 }

@@ -9,10 +9,10 @@
   
   @Component({
       selector: 'app-map-du-settings',
-      templateUrl: './map-du-settings.component.html',
+      templateUrl: './deployementunit-config-settings.component.html',
       styles: []
     })
-    export class MapDUSettings {
+    export class deployementunitSettings {
       activeProduct : Product = new Product;
       activeDeployUnit : DeploymentUnit = new DeploymentUnit;
       configurationSettings : Setting[];   

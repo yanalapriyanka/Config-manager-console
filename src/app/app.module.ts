@@ -10,7 +10,7 @@ import { ProductsComponent } from './components/products/products.component';
 import { CreateProductComponent } from './components/products/create-product.component';
 import { DeploymentUnitsComponent } from './components/deployment-units/deployment-units.component';
 import { CreateDeploymentunitComponent } from './components/deployment-units/create-deploymentunit.component';
-import { MapDUSettings } from './components/deployment-units/map-du-settings.component';
+import { deployementunitSettings } from './components/deployment-units/deployementunit-config-settings.component';
 import { EnvironmentsComponent } from './components/environments/environments.component';
 import { CreateEnvironmentComponent } from './components/environments/create-environment.component';
 import { SettingsComponent } from './components/settings/settings.component';
@@ -25,7 +25,7 @@ import {Utility} from './common/utility';
     AppComponent,
     ProductsComponent,
     DeploymentUnitsComponent,
-    MapDUSettings,
+    deployementunitSettings,
     EnvironmentsComponent,
     SettingsComponent,
     CreateProductComponent,
