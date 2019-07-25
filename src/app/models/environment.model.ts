@@ -3,5 +3,7 @@ export class Environment {
     Name: string;
     Description : string;
     ProductId: number;
-    ProductName: string;    
+    ProductName: string;   
+    IsProxyManaged: boolean;
+    ProxyServiceUrl: string;
 }

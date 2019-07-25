@@ -11,7 +11,7 @@ import { Environment } from 'src/app/models/environment.model';
   styles: []
 })
 export class EnvironmentsComponent implements OnInit {
-  envColumns: any = ['Id', 'Name', 'Description', 'Product'];
+  envColumns: any = ['Id', 'Name', 'Description', 'Product','Manage Proxy', 'Proxy service Url'];
   environments: Environment[];
   errorList: string[]; 
   activeProduct : Product = new Product;

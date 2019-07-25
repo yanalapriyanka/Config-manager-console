@@ -20,6 +20,22 @@
                 <input type="text" id="lname" name="county" placeholder="Description" [(ngModel)]="environment.Description">
             </div>
         </div>
+        <div class="row">           
+            <div class="col-75">
+                <input type="checkbox" id="isProxyManaged" name="county" placeholder="IsProxyManaged" [(ngModel)]="environment.IsProxyManaged">
+            </div>
+            <div class="col-25">
+                <label for="isProxyManaged">Need to manage proxy server</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="lname">ProxyServiceUrl</label>
+            </div>
+            <div class="col-75">
+                <input type="text" id="lname" name="ProxyServiceUrl" placeholder="ProxyServiceUrl" [(ngModel)]="environment.ProxyServiceUrl">
+            </div>
+        </div>
         <div class="row">
             <input type="submit" value="{{isEdit ? 'Update' : 'Save'}}">
         </div>

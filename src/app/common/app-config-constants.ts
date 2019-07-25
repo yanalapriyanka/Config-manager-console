@@ -2,7 +2,7 @@
 export const APIUrlConstants = {
     BaseURL:
     {
-        LocalDev: "http://localhost/",
+        LocalDev: "http://localhost:8081/",
         LocalQA: "http://snapp.soti.net/"
     }
 }
