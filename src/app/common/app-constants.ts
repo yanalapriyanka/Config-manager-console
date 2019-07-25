@@ -14,6 +14,8 @@ export const Constants={
         getEnvironmentByProductId: "/products/{0}/environments",
         createEnvironment:"/products/{0}/environments",
         updateEnvironment:"/products/{0}/environments/{1}",
+        configureEnvironmentSettings:"/products/{0}/environments/{1}/configuresettings",
+        getEnvironmentSettings:"/products/{0}/environments/{1}/settings",
         getSettingById: "/products/{0}/settings/{1}",
         getSettingByProductId: "/products/{0}/settings",
         createSetting:"/products/{0}/settings",

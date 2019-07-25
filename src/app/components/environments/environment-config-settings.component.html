@@ -1,0 +1,20 @@
+<h3 class="header">Environment config settings</h3>
+<div class="map-draggable-container">
+  <div>
+    <ul>
+      <li *ngFor="let setting of environmentSettings">
+          <label>{{setting.Name}}</label>
+          <input type="text" id="fname" name="value" placeholder="Name.." [(ngModel)]="setting.Value">
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="clearfix"></div>
+<div class="footer-section">
+  <div class="buttons">
+    <input type="submit" value="Save" class="button-default" (click)="saveEnvironmentConfigSettings()">
+  </div>
+  <div class="buttons mr-20">
+      <input type="submit" value="Cancel" class="button-danger" (click)="navigateEnvironments()">
+    </div>
+  </div>

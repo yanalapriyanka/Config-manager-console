@@ -9,6 +9,7 @@ import { CreateEnvironmentComponent } from './components/environments/create-env
 import { SettingsComponent } from './components/settings/settings.component';
 import { CreateSettingComponent } from './components/settings/create-setting.component';
 import { deployementunitSettings } from './components/deployment-units/deployementunit-config-settings.component';
+import { environmentSettings } from './components/environments/environment-config-settings.component';
 
 const routes: Routes = [
   {
@@ -63,6 +64,10 @@ const routes: Routes = [
       {
         path: 'edit/:id',
         component: CreateEnvironmentComponent
+      },
+      {
+        path: 'configSettings',
+        component: environmentSettings
       }
     ]
   },

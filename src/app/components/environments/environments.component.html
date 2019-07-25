@@ -15,6 +15,12 @@
             <td >{{env.ProductName}}</td>        
             <td>
                 <div class="edit-action pull-left" routerLink= "edit/{{env.Id}}">&#9998;</div>
+                <div class="dropdown-menu pull-left">
+                    <div class="actionMenu" (clickOutside)="closeActionMenu()" (click)="toggleActionMenu(env)"></div>
+                    <div *ngIf="actionMenus?.length && isActionMenuOpend && activeEnv.Id==env.Id" class="dropdown-menu-content">
+                        <a href="#" routerLink='{{menu.routeTo}}' *ngFor="let menu of actionMenus" (click)="setActiveEnvironment(env)">{{menu.text}}</a>                      
+                    </div>
+                </div>                
             </td>       
         </tr>
     </tbody>

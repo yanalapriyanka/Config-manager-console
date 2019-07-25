@@ -15,8 +15,12 @@ export class EnvironmentsComponent implements OnInit {
   environments: Environment[];
   errorList: string[]; 
   activeProduct : Product = new Product;
+  isActionMenuOpend: boolean;
+  activeEnv : Environment = new Environment;
+  actionMenus = [];
   constructor(public productService: ProductService, private environmentService: EnvironmentService) { }
   ngOnInit() {
+    this.actionList();
     this.activeProduct = this.productService.getActiveProduct();
     if(Object.keys(this.activeProduct).length === 0){
       this.productService.navigateToProducts();
@@ -32,5 +36,23 @@ export class EnvironmentsComponent implements OnInit {
         }      
       });      
     }
+  }
+  toggleActionMenu(env: any): void {
+    this.activeEnv = env;
+    this.isActionMenuOpend = !this.isActionMenuOpend;    
+  }  
+  closeActionMenu(): void {
+    this.isActionMenuOpend = false;
+    console.log('closeActionMenu'); // TODO : implement directive
+  }
+  setActiveEnvironment(env : Environment):void{
+    this.environmentService.setActiveEnvironment(env);   
+  }
+  actionList(): void {
+    this.actionMenus.push({
+      id: 1,
+      text: 'Settings',
+      routeTo: '/environments/configSettings'
+    });    
   }
 }

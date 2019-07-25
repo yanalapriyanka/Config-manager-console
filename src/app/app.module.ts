@@ -11,6 +11,7 @@ import { CreateProductComponent } from './components/products/create-product.com
 import { DeploymentUnitsComponent } from './components/deployment-units/deployment-units.component';
 import { CreateDeploymentunitComponent } from './components/deployment-units/create-deploymentunit.component';
 import { deployementunitSettings } from './components/deployment-units/deployementunit-config-settings.component';
+import { environmentSettings } from './components/environments/environment-config-settings.component';
 import { EnvironmentsComponent } from './components/environments/environments.component';
 import { CreateEnvironmentComponent } from './components/environments/create-environment.component';
 import { SettingsComponent } from './components/settings/settings.component';
@@ -26,6 +27,7 @@ import {Utility} from './common/utility';
     ProductsComponent,
     DeploymentUnitsComponent,
     deployementunitSettings,
+    environmentSettings,
     EnvironmentsComponent,
     SettingsComponent,
     CreateProductComponent,
