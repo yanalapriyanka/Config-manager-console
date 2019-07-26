@@ -1,51 +1,73 @@
-<h3 class="header">{{isEdit ? 'Update' : 'Create'}} Deployment Unit</h3>
-<span *ngFor="let error of errorList;">
-    <p>{{error}}</p>
-</span>
-<div class="container">
-    <form (ngSubmit)="onClickSubmit(deploymentUnit)" >
-        <div class="row">
-            <div class="col-25">
-                <label for="fname">Name</label>
+<div class="header">
+        <div class="logo"><img class="mr-10" src="assets/images/logo.png" alt=""> Configration Manager</div>
+      </div>
+    
+      <div class="container">
+        <div class="content-wrapper">
+    
+          <div class="manageapp-header">
+            <h1 class="pull-left">{{isEdit ? 'Update' : 'Create'}} Deployment Unit</h1>
+      </div>
+    
+        <div class="form-section">
+        <form>
+            <div class="server-error mb-20" *ngIf="errorList.length>0">
+                <span class="error-text"> 
+                    <span *ngFor="let error of errorList;">{{error}}</span>
+                </span>	
+                <span class="cross"></span>
             </div>
-            <div class="col-75">
-                <input type="text" id="fname" name="deploymentUnit.Name" placeholder="Name.." [(ngModel)]="deploymentUnit.Name">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-25">
-                <label for="lname">Description</label>
-            </div>
-            <div class="col-75">
-                <input type="text" id="lname" name="deploymentUnit.Description" placeholder="Description" [(ngModel)]="deploymentUnit.Description">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-25">
-                <label for="lname">Protocol</label>
-            </div>
-            <div class="col-75">
-                <select name="protocol" [(ngModel)]="selectedProtocol">
-                    <option *ngFor="let protocol of protocols" [ngValue]="protocol.ProtocolId">
-                        {{ protocol.ProtocolName }}
-                    </option>
-                </select>
-            </div>
-        </div>
-        <div class="row">
-                <div class="col-25">
-                    <label for="lname">DeploymentUnit Type {{selectedDUType}}</label>
+            <div class="min-h-200">
+            <div class="row mb-20">
+                <div class="w-25pt pull-left">
+                    <label for="fname">Name</label>
                 </div>
-                <div class="col-75">
-                    <select name="deploymentunitType" [(ngModel)]="selectedDUType">
-                        <option *ngFor="let type of deploymentunitTypes" [ngValue]="type.Id">
-                            {{ type.Name }}
+                <div class="w-75pt pull-left">
+                    <input type="text" id="fname" name="deploymentUnit.Name" placeholder="Name.." [(ngModel)]="deploymentUnit.Name">
+                </div>
+            </div>
+            <div class="row mb-20">
+                <div class="w-25pt pull-left">
+                    <label for="lname">Description</label>
+                </div>
+                <div class="w-75pt pull-left">
+                    <input type="text" id="lname" name="deploymentUnit.Description" placeholder="Description" [(ngModel)]="deploymentUnit.Description">
+                </div>
+            </div>
+            <div class="row mb-20">
+                <div class="w-25pt pull-left">
+                    <label for="lname">Protocol</label>
+                </div>
+                <div class="w-75pt pull-left">
+                    <select name="protocol" [(ngModel)]="selectedProtocol">
+                        <option *ngFor="let protocol of protocols" [ngValue]="protocol.ProtocolId">
+                            {{ protocol.ProtocolName }}
                         </option>
                     </select>
                 </div>
             </div>
-        <div class="row">
-            <input type="submit" value="{{isEdit ? 'Update' : 'Save'}}">
-        </div>
-    </form>
-</div>
+            <div class="row mb-20">
+                <div class="w-25pt pull-left">
+                        <label for="lname">DeploymentUnit Type</label>
+                    </div>
+                    <div class="w-75pt pull-left">
+                        <select name="deploymentunitType" [(ngModel)]="selectedDUType">
+                            <option *ngFor="let type of deploymentunitTypes" [ngValue]="type.Id">
+                                {{ type.Name }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="clearfix"></div>
+            <div class="footer-section">
+                <button class="button-default pull-right" (click)="onClickSubmit(deploymentUnit)">{{isEdit ? 'Update' : 'Save'}}</button>
+                <button class="button-flat pull-right" (click)="cancel()">Cancel</button>
+    
+            </div>
+        </form>
+    </div>
+    </div>
+    </div>
+    

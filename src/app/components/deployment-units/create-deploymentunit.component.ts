@@ -18,7 +18,7 @@ export class CreateDeploymentunitComponent implements OnInit {
   constructor(private route: ActivatedRoute , private formBuilder: FormBuilder , private productService : ProductService, private deploymentunitService : DeploymentunitService) {
     this.formBuilder.group({
       protocols: ['']
-    });    
+    });
    }
 
   deploymentUnit : any =  new Object();
@@ -27,16 +27,16 @@ export class CreateDeploymentunitComponent implements OnInit {
   products: Product[];
   activeProduct : Product = new Product;
   isEdit: boolean =false;
-  errorList: string[];
+  errorList: string[] = [];
   selectedProtocol: number= 1;
   selectedDUType: number= 1;
-  ngOnInit() {   
+  ngOnInit() {
     this.protocols = this.deploymentunitService.getProtocols();
     this.deploymentunitTypes = this.deploymentunitService.getDeploymentunitTypes();
     this.activeProduct = this.productService.getActiveProduct();
     if(Object.keys(this.activeProduct).length === 0){
       this.productService.navigateToProducts();
-    } else{      
+    } else{
       let routeParamId=this.route.snapshot.paramMap.get('id');
       if(routeParamId){
         this.isEdit=true;
@@ -59,7 +59,7 @@ export class CreateDeploymentunitComponent implements OnInit {
     if(this.isEdit){
       this.deploymentunitService.updateDeploymentUnit(deploymentUnit).subscribe(res=>{
         if(res && res.Success){
-          this.deploymentunitService.navigateToDeploymentUnits();
+          this.cancel();
         }else{
           this.errorList=res.ErrorDetails;
         }
@@ -67,13 +67,16 @@ export class CreateDeploymentunitComponent implements OnInit {
     } else{
       this.deploymentunitService.createDeploymentUnit(deploymentUnit).subscribe(res=>{
         if(res && res.Success){
-          this.deploymentunitService.navigateToDeploymentUnits();
+          this.cancel();
         }else{
           this.errorList=res.ErrorDetails;
         }
       });
-    }    
-  }  
+    }
+  }
+  cancel(): void{
+    this.deploymentunitService.navigateToDeploymentUnits();
+  }
   private createRequest(obj: any): DeploymentUnit{
     let dUnit= new DeploymentUnit();
     dUnit.Id = obj.Id;
@@ -86,5 +89,5 @@ export class CreateDeploymentunitComponent implements OnInit {
     dUnit.DeploymentUnitTypeId = this.selectedDUType;
 
     return dUnit;
-  } 
+  }
 }

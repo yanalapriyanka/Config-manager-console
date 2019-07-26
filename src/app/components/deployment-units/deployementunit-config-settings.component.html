@@ -1,9 +1,20 @@
-<h3 class="header">Deployment Units Mapping</h3>
+<div class="header">
+    <div class="logo"><img class="mr-10" src="assets/images/logo.png" alt=""> Configration Manager</div>
+  </div>
+
+  <div class="container">
+    <div class="content-wrapper">
+
+      <div class="manageapp-header">
+        <h1 class="pull-left">Deployment Units Mapping</h1>
+  </div>
+
+
 <div class="map-draggable-container">
   <div class="map-blocks-source">
     <ul>
-      <li *ngFor="let source of sourceSettings" 
-      (click)="selectSourceItem(source.Id)" 
+      <li *ngFor="let source of sourceSettings"
+      (click)="selectSourceItem(source.Id)"
       [ngClass]="selectedSourceItem==source.Id ? 'active' : ''">
           <span>{{source.Name}}</span>
       </li>
@@ -17,10 +28,10 @@
   <div class="map-blocks-destination">
     <ul>
         <li *ngFor="let destination of destinationSettings"
-        (click)="selectDestinationItem(destination.Id)" 
+        (click)="selectDestinationItem(destination.Id)"
         [ngClass]="selectedDestinationItem==destination.Id ? 'active' : ''">
             <span>{{destination.Name}}</span>
-        </li>        
+        </li>
     </ul>
   </div>
 </div>
@@ -33,3 +44,5 @@
       <input type="submit" value="Cancel" class="button-danger" (click)="navigateDeployUnits()">
     </div>
   </div>
+</div>
+</div>

@@ -12,7 +12,7 @@ import { DUTypes} from 'src/app/common/app-constants';
   styles: []
 })
 export class DeploymentUnitsComponent implements OnInit {
-  deployUnitColumns: any = ['Name', 'Description','DeploymentUnit Type', 'Product' ,'Protocol'];
+  deployUnitColumns: any = ['Name', 'Description','DeploymentUnit Type', 'Product' ,'Protocol','Actions'];
   deploymentUnits: DeploymentUnit[];
   errorList: string[]; 
   activeProduct : Product = new Product;

@@ -1,28 +1,39 @@
-<h3 class="header">Deplyment Units</h3>
-<button class="create-button" routerLink='create' >New Deployment Unit</button>
-<table>
-        <thead>
-            <tr>
-               <th *ngFor="let coloumn of deployUnitColumns">{{coloumn}}</th>
-               <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let dUnit of deploymentUnits; let i = index ">
-                <td>{{dUnit.Name}}</td>
-                <td>{{dUnit.Description}}</td>   
-                <td>{{DUTypes[dUnit.DeploymentUnitTypeId]}}</td>
-                <td>{{dUnit.ProductName}}</td>
-                <td>{{dUnit.ProtocolName}}</td>    
-                <td>
-                    <div class="edit-action pull-left" routerLink= "edit/{{dUnit.Id}}">&#9998;</div>
-                    <div class="dropdown-menu pull-left">
-                        <div class="actionMenu" (clickOutside)="closeActionMenu()" (click)="toggleActionMenu(dUnit)"></div>
-                        <div *ngIf="actionMenus?.length && isActionMenuOpend && activeDU.Id==dUnit.Id" class="dropdown-menu-content">
-                            <a href="#" routerLink='{{menu.routeTo}}' *ngFor="let menu of actionMenus" (click)="setActiveDeployUnit(dUnit)">{{menu.text}}</a>                      
+<div class="header">
+        <div class="logo"><img class="mr-10" src="assets/images/logo.png" alt=""> Configration Manager</div>
+      </div>
+      <div class="container">
+        <div class="content-wrapper">
+          <div class="manageapp-header">
+            <h1 class="pull-left">Deplyment Units</h1>
+      <button class="button-flat pull-right" routerLink='create' > <span class="flat-button-icon mr-10 pull-left"></span>New Deployment Unit</button>
+      </div>
+      <div class="table-wrapper">
+    <table>
+            <thead>
+                <tr>
+                   <th *ngFor="let coloumn of deployUnitColumns">{{coloumn}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let dUnit of deploymentUnits; let i = index ">
+                    <td class="w-10pt">{{dUnit.Name}}</td>
+                    <td class="w-30pt">{{dUnit.Description}}</td>
+                    <td class="w-15pt">{{DUTypes[dUnit.DeploymentUnitTypeId]}}</td>
+                    <td class="w-20pt">{{dUnit.ProductName}}</td>
+                    <td class="w-15pt">{{dUnit.ProtocolName}}</td>
+                    <td class="w-10pt">
+                        <div class="edit-action pull-left action-icon" routerLink= "edit/{{dUnit.Id}}">&#9998;</div>
+                        <div class="dropdown-menu pull-left">
+                            <div class="actionMenu action-icon" (clickOutside)="closeActionMenu()" (click)="toggleActionMenu(dUnit)"></div>
+                            <ul *ngIf="actionMenus?.length && isActionMenuOpend && activeDU.Id==dUnit.Id" class="dropdown-menu-content">
+                                <li href="#" routerLink='{{menu.routeTo}}' *ngFor="let menu of actionMenus" (click)="setActiveDeployUnit(dUnit)">{{menu.text}}</li>
+                            </ul>
                         </div>
-                    </div>
-                </td>           
-            </tr>
-        </tbody>
-</table>
+                    </td>
+                </tr>
+            </tbody>
+    </table>
+    </div>
+    </div>
+    </div>
+    
