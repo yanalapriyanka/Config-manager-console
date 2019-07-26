@@ -1,29 +1,40 @@
-<h3 class="header">Environments</h3>
-<button class="create-button" routerLink='create' >New Environment</button>
-<table>
-    <thead>
-        <tr>
-            <th *ngFor="let coloumn of envColumns">{{coloumn}}</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let env of environments; let i = index ">
-            <td >{{env.Id}}</td>
-            <td >{{env.Name}}</td>
-            <td >{{env.Description}}</td>  
-            <td >{{env.ProductName}}</td>    
-            <td >{{env.IsProxyManaged}}</td>  
-            <td >{{env.ProxyServiceUrl}}</td>         
-            <td>
-                <div class="edit-action pull-left" routerLink= "edit/{{env.Id}}">&#9998;</div>
-                <div class="dropdown-menu pull-left">
-                    <div class="actionMenu" (clickOutside)="closeActionMenu()" (click)="toggleActionMenu(env)"></div>
-                    <div *ngIf="actionMenus?.length && isActionMenuOpend && activeEnv.Id==env.Id" class="dropdown-menu-content">
-                        <a href="#" routerLink='{{menu.routeTo}}' *ngFor="let menu of actionMenus" (click)="setActiveEnvironment(env)">{{menu.text}}</a>                      
+<div class="header">
+        <div class="logo"><img class="mr-10" src="assets/images/logo.png" alt=""> Configration Manager</div>
+      </div>
+      <div class="container">
+        <div class="content-wrapper">
+          <div class="manageapp-header">
+            <h1 class="pull-left">Environments</h1>
+      <button class="button-flat pull-right" routerLink='create' > <span class="flat-button-icon mr-10 pull-left"></span>New Environment</button>
+      </div>
+      <div class="table-wrapper">
+    <table>
+        <thead>
+            <tr>
+                <th *ngFor="let coloumn of envColumns">{{coloumn}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let env of environments; let i = index ">
+                <td >{{env.Id}}</td>
+                <td >{{env.Name}}</td>
+                <td >{{env.Description}}</td>
+                <td >{{env.ProductName}}</td>
+                <td >{{env.IsProxyManaged}}</td>
+                <td >{{env.ProxyServiceUrl}}</td>
+                <td>
+                    <div class="edit-action pull-left" routerLink= "edit/{{env.Id}}">&#9998;</div>
+                    <div class="dropdown-menu pull-left">
+                        <div class="actionMenu" (clickOutside)="closeActionMenu()" (click)="toggleActionMenu(env)"></div>
+                        <div *ngIf="actionMenus?.length && isActionMenuOpend && activeEnv.Id==env.Id" class="dropdown-menu-content">
+                            <a href="#" routerLink='{{menu.routeTo}}' *ngFor="let menu of actionMenus" (click)="setActiveEnvironment(env)">{{menu.text}}</a>
+                        </div>
                     </div>
-                </div>                
-            </td>       
-        </tr>
-    </tbody>
-</table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    </div>
+    </div>
+    

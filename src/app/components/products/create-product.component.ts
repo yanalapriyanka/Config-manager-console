@@ -36,7 +36,7 @@ export class CreateProductComponent implements OnInit {
     if(this.isEdit){
       this.productService.updateProduct(product).subscribe(res=>{
         if(res && res.Success){
-          this.productService.navigateToProducts();
+          this.cancel();
         }else{
           this.errorList=res.ErrorDetails;
         }
@@ -44,7 +44,7 @@ export class CreateProductComponent implements OnInit {
     } else{
       this.productService.createProduct(product).subscribe(res=>{
         if(res && res.Success){
-          this.productService.navigateToProducts();
+          this.cancel();
         }else{
           this.errorList=res.ErrorDetails;
         }

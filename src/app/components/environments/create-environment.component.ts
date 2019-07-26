@@ -19,13 +19,13 @@ export class CreateEnvironmentComponent implements OnInit {
   environment : Environment =  new Environment();
   activeProduct : Product = new Product;
   isEdit: boolean =false;
-  errorList: string[];
+  errorList: string[] = [];
 
   ngOnInit() {
     this.activeProduct = this.productService.getActiveProduct();
     if(Object.keys(this.activeProduct).length === 0){
       this.productService.navigateToProducts();
-    } else{      
+    } else{
       let routeParamId=this.route.snapshot.paramMap.get('id');
       if(routeParamId){
         this.isEdit=true;
@@ -47,7 +47,7 @@ export class CreateEnvironmentComponent implements OnInit {
     if(this.isEdit){
       this.environmentService.updateEnvironment(environment).subscribe(res=>{
         if(res && res.Success){
-          this.environmentService.navigateToEnvironments();
+          this.cancel();
         }else{
           this.errorList=res.ErrorDetails;
         }
@@ -55,11 +55,14 @@ export class CreateEnvironmentComponent implements OnInit {
     } else{
       this.environmentService.createEnvironment(environment).subscribe(res=>{
         if(res && res.Success){
-          this.environmentService.navigateToEnvironments();
+          this.cancel();
         }else{
           this.errorList=res.ErrorDetails;
         }
       });
-    }  
+    }
+  }
+  cancel(): void {
+    this.environmentService.navigateToEnvironments();
   }
 }

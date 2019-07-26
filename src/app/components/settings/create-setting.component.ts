@@ -50,7 +50,7 @@ export class CreateSettingComponent implements OnInit {
     if(this.isEdit){
       this.settingService.updateSetting(setting).subscribe(res=>{
         if(res && res.Success){
-          this.settingService.navigateToSettings();
+          this.cancel();
         }else{
           this.errorList=res.ErrorDetails;
         }
@@ -58,7 +58,7 @@ export class CreateSettingComponent implements OnInit {
     } else{
       this.settingService.createSetting(setting).subscribe(res=>{
         if(res && res.Success){
-          this.settingService.navigateToSettings();
+          this.cancel();
         }else{
           this.errorList=res.ErrorDetails;
         }
