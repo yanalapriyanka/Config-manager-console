@@ -13,7 +13,7 @@ import {ConfigSettingTypes} from 'src/app/common/app-constants';
   styles: []
 })
 export class SettingsComponent implements OnInit {
-  settingColumns: any = ['Id', 'Name', 'Description', 'Product', 'Setting Type'];
+  settingColumns: any = ['Id', 'Name', 'Description', 'Product', 'Setting Type','Actions'];
   settings : Setting[];
   errorList: string[]; 
   ConfigSettingTypes = ConfigSettingTypes;

@@ -14,7 +14,7 @@ export class ProductsComponent implements OnInit {
   isActionMenuOpend: boolean;
   actionMenus = [];
   activeProduct : Product = new Product;
-  productColumns: any = ['Id', 'Name', 'Description','Actions'];s
+  productColumns: any = ['Id', 'Name', 'Description','Actions'];
   products: Product[];
   errorList: string[];
 

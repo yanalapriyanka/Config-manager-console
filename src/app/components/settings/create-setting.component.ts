@@ -19,7 +19,7 @@ export class CreateSettingComponent implements OnInit {
   selectedSettingType: number= 1;
   activeProduct : Product = new Product;
   isEdit: boolean =false;
-  errorList: string[];
+  errorList: string[] = [];
 
   constructor(private route: ActivatedRoute ,private settingService: SettingService, private productService:ProductService) { }
 
@@ -28,7 +28,7 @@ export class CreateSettingComponent implements OnInit {
     this.activeProduct = this.productService.getActiveProduct();
     if(Object.keys(this.activeProduct).length === 0){
       this.productService.navigateToProducts();
-    } else{      
+    } else{
       let routeParamId=this.route.snapshot.paramMap.get('id');
       if(routeParamId){
         this.isEdit=true;
@@ -63,7 +63,7 @@ export class CreateSettingComponent implements OnInit {
           this.errorList=res.ErrorDetails;
         }
       });
-    }    
+    }
   }
   private createRequest(obj: any): Setting{
     let setting= new Setting();
@@ -75,5 +75,8 @@ export class CreateSettingComponent implements OnInit {
     setting.ConfigurationSettingTypeId = this.selectedSettingType;
 
     return setting;
-  } 
+  }
+  cancel(): void {
+    this.settingService.navigateToSettings();
+  }
 }

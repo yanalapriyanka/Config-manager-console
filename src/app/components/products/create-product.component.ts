@@ -52,7 +52,7 @@ export class CreateProductComponent implements OnInit {
     }
   }
   // cancel product
- cancel(product: Product): void {
+ cancel(): void {
     this.productService.navigateToProducts();
   }
 }
