@@ -13,9 +13,9 @@ export class CreateProductComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private productService:ProductService){
   }
-  errorList : string[];
+  errorList : string[] = [];
   product : Product = new Product();
-  isEdit: boolean =false;  
+  isEdit: boolean =false;
   ngOnInit() {
     let routeParamId=this.route.snapshot.paramMap.get('id');
     if(routeParamId){
@@ -28,7 +28,7 @@ export class CreateProductComponent implements OnInit {
           this.errorList=res.ErrorDetails;
         }
       });
-    }   
+    }
   }
   //TODO: update any to Product
   onClickSubmit(product: Product): void {
@@ -49,6 +49,10 @@ export class CreateProductComponent implements OnInit {
           this.errorList=res.ErrorDetails;
         }
       });
-    }    
+    }
+  }
+  // cancel product
+ cancel(product: Product): void {
+    this.productService.navigateToProducts();
   }
 }

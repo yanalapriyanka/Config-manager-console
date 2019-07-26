@@ -14,17 +14,17 @@ export class ProductsComponent implements OnInit {
   isActionMenuOpend: boolean;
   actionMenus = [];
   activeProduct : Product = new Product;
-  productColumns: any = ['Id', 'Name', 'Description'];
+  productColumns: any = ['Id', 'Name', 'Description','Actions'];s
   products: Product[];
   errorList: string[];
- 
+
   ngOnInit() {
     this.actionList();
     this.getAllProducts();
   }
   toggleActionMenu(product: any): void {
     this.activeProduct = product;
-    this.isActionMenuOpend = !this.isActionMenuOpend;    
+    this.isActionMenuOpend = !this.isActionMenuOpend;
   }
   closeActionMenu(): void {
     this.isActionMenuOpend = false;
@@ -48,7 +48,7 @@ export class ProductsComponent implements OnInit {
     });
   }
   setActiveProduct(product : Product):void{
-    this.productService.setActiveProduct(product);   
+    this.productService.setActiveProduct(product);
   }
   getAllProducts():void{
     this.productService.fetchAllProducts().subscribe(res => {
@@ -58,8 +58,8 @@ export class ProductsComponent implements OnInit {
         this.productService.setProducts(res.Data);
       } else {
         this.errorList = res.ErrorDetails;
-      }      
+      }
     });
-    
+
   }
 }

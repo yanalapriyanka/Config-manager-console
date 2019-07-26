@@ -1,0 +1,52 @@
+.table-wrapper{
+  padding: 0 20px;
+
+table{
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 14px;
+
+thead tr{
+  height: 40px;
+}
+tbody tr{
+  height: 44px;
+
+  &:hover {
+  background-color: $table-hover-color;
+}
+}
+th, td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid $border-color;
+}
+th{
+  border-top: 1px solid $border-color;
+}
+}
+.actionMenu:after {
+  content: '\2807';
+  font-size: 20px;
+  cursor: pointer;
+  padding-left: 6px;
+}
+}
+.edit-action{
+  margin-right:12px;
+  margin-top:2px;
+}
+.action-icon{
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  border-radius: 50%;
+  line-height: 28px;
+  text-align: center;
+  background-color: $action-icon-background;
+
+  &:hover{
+    background-color:$btn-bg-color;
+    color:$color-white;
+  }
+}

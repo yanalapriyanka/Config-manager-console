@@ -1,0 +1,102 @@
+*{
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  color: $default-color;
+}
+body{
+
+}
+.container {
+  border-radius: 5px;
+  position: relative;
+}
+
+.header {
+  background-color: $header-bg-color;
+  padding: 0px 20px;
+  font-size: 20px;
+  height: $header-height;
+  line-height: $header-height;
+  font-weight: normal;
+  text-align: center;
+  margin: 0;
+  color: #fff;
+
+  .logo{
+color: $color-white;
+float: left;
+display: flex;
+align-items: center;
+  }
+}
+.manageapp-header{
+  height: $manageapp-header;
+  box-shadow: 8px 1px 13px 2px rgba(67, 70, 74, 0.16);
+  margin-bottom: 20px;
+  width: 100%;
+  padding: 10px 20px;
+}
+
+
+
+// button style //
+
+.button-flat{
+border: none;
+background-color: #fff;
+height: 36px;
+line-height: 36px;
+padding: 0px;
+margin-top: 2px;
+font-size: 14px;
+font-weight: 600;
+display: flex;
+align-items: center;
+
+.flat-button-icon{
+  width: 28px;
+  height: 28px;
+  line-height: 28px;
+  background-color: $btn-bg-color;
+  border-radius: 50%;
+  color: #fff;
+  position: relative;
+
+&::before{
+  content: '\271B';
+  font-size: 18px;
+  line-height: 28px;
+}
+}
+}
+
+.button-default{
+  border: none;
+  background-color: $btn-bg-color;
+  height: 36px;
+  padding: 6px 12px;
+  margin-top: 2px;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.25px;
+  border-radius: 3px;
+  color: $color-white;
+  margin-left: 20px;
+
+  &:hover{
+    background-color: $btn-hv-color;
+  }
+}
+
+.button-default[disabled], .button-default-disabled {
+  background-color: $action-icon-background;
+  color: #A8B2B7 !important;
+  border: 1px solid $table-hover-color;
+  cursor: default;
+  pointer-events: none;
+}

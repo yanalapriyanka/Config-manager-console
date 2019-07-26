@@ -1,16 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 @import './styles/variables.scss';
-*{
-  box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
-}
-.header {
-    background-color: $header-bg-color;
-    padding: 20px 10px;
-    font-size: 20px;
-    font-weight: normal;
-    text-align: center;
-}
+@import './styles/core.scss';
+@import './styles/table.scss';
+@import './styles/helpers.scss';
+@import './styles/form.scss';
+
+
 .create-button {
     background-color: $btn-bg-color;
     border: none;
@@ -22,95 +17,19 @@
     cursor: pointer;
     display:flex;
 }
-.create-button :hover {
-  background-color: $btn-hv-color;
-}
-/* table css */
-table{
-    border-collapse: collapse;
-    width: 100%;
-}
-th, td {
-    text-align: left;
-    padding: 8px;
-    border-bottom: 1px solid $border-color;
-    border-top: 1px solid $border-color;
-} 
-th{
-    background-color: $th-bg-color;
-}
-tr:nth-child(even) {background-color:$even-column-bg-color;}
-.actionMenu:after {
-    content: '\2807';
-    font-size: 20px;
-    cursor: pointer;
-}
-/* end table css */
-/* action menu css */
-.dropdown-menu {
-  position: relative;
-  display: inline-block;
-}
-.dropdown-menu-content {
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-.dropdown-menu-content a {
-  color: $color-black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-.dropdown-menu-content a:hover {background-color: #ddd;}
-.edit-action{
-  margin-right:12px;
-  margin-top:2px;
-  cursor: pointer;
-}
+
 /* end action menu css */
 /* Css of Create Form*/
-input[type=text], select, textarea {
-  width: 50%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  resize: vertical;
-}
-label {
-  padding: 12px 12px 12px 0;
-  display: inline-block;
-}
-input[type=submit] {
-  background-color: $btn-bg-color;
-  color: $color-white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  float: right;
-}
-input[type=submit]:hover {
-  background-color: $btn-hv-color;
-}
-.container {
-  border-radius: 5px;
-  background-color: $form-bg-color;
-  padding: 20px;
-}.col-25 {
+.col-25 {
   float: left;
   width: 25%;
-  margin-top: 6px;
+  margin-top: 10px;
 }
-.mr-20{
-  margin-right: 20px;
-}
+
 .col-75 {
   float: left;
   width: 75%;
-  margin-top: 6px;
+  margin-top: 10px;
 }
 /* Clear floats after the columns */
 .row:after {
@@ -120,18 +39,8 @@ input[type=submit]:hover {
 }
 /* end Create form */
 /* Generic Style*/
-.pull-left{
-  float: left;
-}
-.pull-right{
-  float:right;
-}
-.cursor-pointer{
-  cursor: pointer;
-}
-.clearfix{
-  clear: both;
-}
+
+
 /* Generic Style*/
 
 .map-draggable-container div ul {
@@ -155,7 +64,7 @@ input[type=submit]:hover {
 
 .map-draggable-container {
   position: relative;
-  
+
   .map-blocks-source{
     border-radius: 6px;
     border: 1px solid #e2e3e4;
@@ -235,29 +144,8 @@ input[type=submit]:hover {
         &.active{
           background-color: #ccc;
           color: #fff;
-        }       
-      }      
+        }
+      }
     }
-  }
-}
-.lessThan:after {
-  content: '\003C';        
-}
-.greaterThan:after {
-  content: '\003E';        
-}
-.doubleLessThan:after{
-  content: '\226A';
-}
-.doubleGreaterThan:after{
-  content: '\226B';
-}
-.footer-section{
-  margin: 20px auto 0 auto;
-  width: 700px;
-  border-top: 1px solid #e2e3e4;
-  padding-top: 20px;  
-  .buttons{
-    float: right;
   }
 }
